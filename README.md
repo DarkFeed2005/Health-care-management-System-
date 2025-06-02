@@ -9,8 +9,8 @@ A **role-based healthcare management system** designed for the **Ministry of Hea
 
 ## 🔹 Features  
 ✅ **Authentication System** – Three user roles:  
-   - **Super Admins** (Doctors & Senior Public Health Inspectors)  
-   - **Admins** (Public Health Inspectors)  
+   - **Super Admins** (Doctors & Regional director of health services)  
+   - **Admins** (Senior Public Health Inspectors & Public Health Inspectors)  
    - **Users** (Public individuals seeking healthcare services)  
 
 ✅ **Role-Based Dashboards** – Dynamic UI tailored for each user type.  
