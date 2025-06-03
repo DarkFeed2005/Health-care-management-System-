@@ -10,7 +10,7 @@ class HealthcareDashboard(ctk.CTk):
 
         # Window properties
         self.title("MOH Healthcare Management System")
-        self.geometry("800x500")
+        self.geometry("1000x680+325+175")
 
         # Sidebar
         self.sidebar_frame = ctk.CTkFrame(self, width=200, corner_radius=10)
