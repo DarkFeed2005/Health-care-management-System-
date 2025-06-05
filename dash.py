@@ -1,20 +1,26 @@
 import customtkinter as ctk
 
 # Initialize app
-ctk.set_appearance_mode("Dark")  # Options: "Dark" or "Light"
+ctk.set_appearance_mode("Dark")  
 ctk.set_default_color_theme("blue")
 
 class HealthcareDashboard(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        # Window settings
         self.title("MOH Healthcare Management System")
         self.geometry("800x500")
+
+        # Sidebar variables
+        self.sidebar_visible = True
 
         # Sidebar frame
         self.sidebar = ctk.CTkFrame(self, width=200, corner_radius=10)
         self.sidebar.pack(side="left", fill="y", padx=10, pady=10)
+
+        # Sidebar toggle button (inside sidebar)
+        self.toggle_sidebar_btn = ctk.CTkButton(self.sidebar, text="⇦ Hide", command=self.toggle_sidebar, width=50)
+        self.toggle_sidebar_btn.pack(pady=10)
 
         # Sidebar buttons
         self.home_btn = ctk.CTkButton(self.sidebar, text="🏠 Home", command=lambda: self.update_content("Home"))
@@ -29,10 +35,6 @@ class HealthcareDashboard(ctk.CTk):
         self.billing_btn = ctk.CTkButton(self.sidebar, text="💳 Billing", command=lambda: self.update_content("Billing"))
         self.billing_btn.pack(pady=10)
 
-        # Dark mode toggle
-        self.toggle_mode = ctk.CTkButton(self.sidebar, text="🌗 Toggle Mode", command=self.toggle_mode)
-        self.toggle_mode.pack(pady=20)
-
         # Main content area
         self.main_frame = ctk.CTkFrame(self, corner_radius=10)
         self.main_frame.pack(side="right", fill="both", expand=True, padx=10, pady=10)
@@ -44,10 +46,16 @@ class HealthcareDashboard(ctk.CTk):
         """Update main display based on sidebar selection"""
         self.label.configure(text=f"{section} Section")
 
-    def toggle_mode(self):
-        """Toggle between Dark and Light mode"""
-        current_mode = ctk.get_appearance_mode()
-        ctk.set_appearance_mode("Light" if current_mode == "Dark" else "Dark")
+    def toggle_sidebar(self):
+        """Show/Hide Sidebar"""
+        if self.sidebar_visible:
+            self.sidebar.pack_forget()  # Hide sidebar
+            self.toggle_sidebar_btn.configure(text="⇨ Show")
+        else:
+            self.sidebar.pack(side="left", fill="y", padx=10, pady=10)  # Show sidebar
+            self.toggle_sidebar_btn.configure(text="⇦ Hide")
+
+        self.sidebar_visible = not self.sidebar_visible  # Toggle state
 
 # Run the app
 if __name__ == "__main__":
