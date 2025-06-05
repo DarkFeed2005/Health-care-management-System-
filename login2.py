@@ -11,7 +11,7 @@ class LoginApp(ctk.CTk):
         super().__init__()
 
         self.title("MOH Login")
-        self.geometry("300x00")
+        self.geometry("300x200")
 
         # Login Frame
         self.frame = ctk.CTkFrame(self)
