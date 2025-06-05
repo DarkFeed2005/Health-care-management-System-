@@ -10,8 +10,8 @@ class LoginApp(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("MOH Healthcare Login")
-        self.geometry("400x300")
+        self.title("MOH Login")
+        self.geometry("300x00")
 
         # Login Frame
         self.frame = ctk.CTkFrame(self)
