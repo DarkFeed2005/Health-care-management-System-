@@ -22,7 +22,7 @@ frame = CTkFrame(master=app, width=700, height=680, fg_color="#ffffff")
 frame.pack_propagate(0)
 frame.pack(expand=True, side="right")
 
-CTkLabel(master=frame, text="Welcome Back!", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 34)).pack(anchor="w", pady=(150, 5), padx=(25, 0))
+CTkLabel(master=frame, text="Welcome to MOH!", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 34)).pack(anchor="w", pady=(140, 5), padx=(10, 0))
 CTkLabel(master=frame, text="Sign in to your account", text_color="#7E7E7E", anchor="w", justify="left", font=("Arial Bold", 18)).pack(anchor="w", padx=(25, 0))
 
 CTkLabel(master=frame, text="  Email:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=email_icon, compound="left").pack(anchor="w", pady=(38, 0), padx=(25, 0))
