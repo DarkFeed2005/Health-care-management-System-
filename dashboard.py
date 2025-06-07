@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import matplotlib.pyplot as plt
 
 # Initialize main app
 ctk.set_appearance_mode("Dark")  # Options: "Dark" or "Light"
@@ -52,8 +53,11 @@ class HealthcareDashboard(ctk.CTk):
         current_mode = ctk.get_appearance_mode()
         new_mode = "Light" if current_mode == "Dark" else "Dark"
         ctk.set_appearance_mode(new_mode)
-
+        
+    
 # Run the app
 if __name__ == "__main__":
     app = HealthcareDashboard()
     app.mainloop()
+    
+    
