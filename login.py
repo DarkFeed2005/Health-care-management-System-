@@ -1,38 +1,62 @@
-from customtkinter import *
-from PIL import Image
+import customtkinter as ctk
+from tkinter import messagebox
+import mysql.connector
+import subprocess  # To open dashboards
 
-app = CTk()
-app.geometry("1000x680+325+175")
-app.title("MOH Login")
-app.resizable(0,0)
+# Connect to MySQL
+conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
+cursor = conn.cursor()
 
-side_img_data = Image.open("side-img.png")
-email_icon_data = Image.open("email-icon.png")
-password_icon_data = Image.open("password-icon.png")
-google_icon_data = Image.open("google-icon.png")
+def login():
+    username = user_entry.get()
+    password = pass_entry.get()
+    role = role_var.get()
 
-side_img = CTkImage(dark_image=side_img_data, light_image=side_img_data, size=(700, 680))
-email_icon = CTkImage(dark_image=email_icon_data, light_image=email_icon_data, size=(20,20))
-password_icon = CTkImage(dark_image=password_icon_data, light_image=password_icon_data, size=(17,17))
-google_icon = CTkImage(dark_image=google_icon_data, light_image=google_icon_data, size=(17,17))
+    cursor.execute(f"SELECT * FROM users WHERE email='{username}' AND password='{password}' AND role='{role}'")
+    result = cursor.fetchone()
 
-CTkLabel(master=app, text="", image=side_img).pack(expand=True, side="left")
+    if result:
+        messagebox.showinfo("Login", f"Welcome {username} as {role}")
+        app.destroy()  # Close login window
+        
+        # Redirect to respective dashboard
+        if role == "SuperAdmin":
+            subprocess.run(["python", "super_admin_dash.py"])
+        elif role == "Admin":
+            subprocess.run(["python", "admin_dash.py"])
+        elif role == "User":
+            subprocess.run(["python", "user_dash.py"])
+    else:
+        messagebox.showerror("Error", "Invalid credentials!")
 
-frame = CTkFrame(master=app, width=700, height=680, fg_color="#ffffff")
-frame.pack_propagate(0)
-frame.pack(expand=True, side="right")
+def open_reset_password():
+    app.destroy()
+    subprocess.run(["python", "reset_password.py"])  # Open password reset page
 
-CTkLabel(master=frame, text="Welcome to MOH!", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 34)).pack(anchor="w", pady=(140, 5), padx=(10, 0))
-CTkLabel(master=frame, text="Sign in to your account", text_color="#7E7E7E", anchor="w", justify="left", font=("Arial Bold", 18)).pack(anchor="w", padx=(25, 0))
+app = ctk.CTk()
+app.geometry("400x300")
+app.title("MOH Healthcare Login")
+app.configure(fg_color="#1E2A38")
 
-CTkLabel(master=frame, text="  Email:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=email_icon, compound="left").pack(anchor="w", pady=(38, 0), padx=(25, 0))
-CTkEntry(master=frame, width=225, fg_color="#EEEEEE", border_color="#601E88", border_width=1, text_color="#000000").pack(anchor="w", padx=(25, 0))
+ctk.CTkLabel(app, text="Username:", text_color="#FFFFFF").pack()
+user_entry = ctk.CTkEntry(app, width=200)
+user_entry.pack()
 
-CTkLabel(master=frame, text="  Password:", text_color="#601E88", anchor="w", justify="left", font=("Arial Bold", 14), image=password_icon, compound="left").pack(anchor="w", pady=(21, 0), padx=(25, 0))
-CTkEntry(master=frame, width=225, fg_color="#EEEEEE", border_color="#601E88", border_width=1, text_color="#000000", show="*").pack(anchor="w", padx=(25, 0))
+ctk.CTkLabel(app, text="Password:", text_color="#FFFFFF").pack()
+pass_entry = ctk.CTkEntry(app, show="*", width=200)
+pass_entry.pack()
 
-CTkButton(master=frame, text="Login", fg_color="#601E88", hover_color="#E44982", font=("Arial Bold", 12), text_color="#ffffff", width=225).pack(anchor="w", pady=(40, 0), padx=(25, 0))
-CTkButton(master=frame, text="Don't have an account?", fg_color="#EEEEEE", hover_color="#EEEEEE", font=("Arial Bold", 9), text_color="#601E88", width=225, image=google_icon).pack(anchor="w", pady=(20, 0), padx=(25, 0))
+ctk.CTkLabel(app, text="Select Role:", text_color="#FFFFFF").pack()
+role_var = ctk.StringVar(value="User")
+role_menu = ctk.CTkComboBox(app, variable=role_var, values=["SuperAdmin", "Admin", "User"])
+role_menu.pack()
 
+ctk.CTkButton(app, text="Login", command=login, fg_color="#0084FF", hover_color="#4CC9F0").pack(pady=10)
+ctk.CTkButton(app, text="Forgot Password?", command=open_reset_password, fg_color="#FF6B6B", hover_color="#FF9999").pack(pady=10)
 
 app.mainloop()
+ 
+ 
+ 
+ 
+ 
