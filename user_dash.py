@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import messagebox, simpledialog
-import subprocess  # To reopen login.py after logout
+import subprocess  # To reopen signup.py after logout
 import mysql.connector  # MySQL database connection
 
 # Connect to MySQL
@@ -21,7 +21,7 @@ class UserDashboard(ctk.CTk):
         self.sidebar_visible = True
 
         # **Define user attributes before fetching data**
-        self.user_name = ""
+        self.user_name = "Unknown User"
         self.user_email = "johndoe@example.com"  # Replace with logged-in user's email
 
         # Fetch user details from the database
@@ -71,10 +71,10 @@ class UserDashboard(ctk.CTk):
 
     def fetch_user_data(self):
         """Fetch user details from the database"""
-        cursor.execute(f"SELECT name, email FROM users WHERE email='{self.user_email}'")
+        cursor.execute("SELECT name, email FROM users WHERE email=%s", (self.user_email,))
         result = cursor.fetchone()
         if result:
-            self.user_name, self.user_email = result  # **Ensure user attributes update correctly**
+            self.user_name, self.user_email = result
         else:
             messagebox.showerror("Error", "User not found in database!")
 
@@ -86,47 +86,34 @@ class UserDashboard(ctk.CTk):
     def show_profile(self):
         """Display user profile details"""
         self.clear_main_frame()
+        self.fetch_user_data()  # Ensure updated details are displayed
+
+        # Display Profile Information
         ctk.CTkLabel(self.main_frame, text="👤 User Profile", font=("Arial", 20)).pack(pady=10)
         ctk.CTkLabel(self.main_frame, text=f"Name: {self.user_name}", font=("Arial", 16)).pack(pady=5)
         ctk.CTkLabel(self.main_frame, text=f"Email: {self.user_email}", font=("Arial", 16)).pack(pady=5)
-
-        # Ensure Change Profile button appears correctly
+        
         ctk.CTkButton(self.main_frame, text="Change Profile", command=self.change_profile, fg_color="#0084FF").pack(pady=10)
-
-    def change_profile(self):
-        """Allow user to change profile details"""
-        new_name = simpledialog.askstring("Change Profile", "Enter new name:")
-        new_email = simpledialog.askstring("Change Profile", "Enter new email:")
-        new_password = simpledialog.askstring("Change Profile", "Enter new password:")
-
-        if new_name or new_email or new_password:
-            update_query = "UPDATE users SET "
-            updates = []
-
-            if new_name:
-                updates.append(f"name='{new_name}'")
-            if new_email:
-                updates.append(f"email='{new_email}'")
-            if new_password:
-                updates.append(f"password='{new_password}'")
-
-            update_query += ", ".join(updates) + f" WHERE email='{self.user_email}'"
-
-            cursor.execute(update_query)
-            conn.commit()
-            messagebox.showinfo("Profile Updated", "Your profile has been updated successfully!")
-
-            # Refresh user details after update
-            self.fetch_user_data()
-            self.show_profile()  # Reload profile section
 
     def show_appointments(self):
         """Display upcoming appointments"""
         self.clear_main_frame()
         ctk.CTkLabel(self.main_frame, text="📅 Your Appointments", font=("Arial", 20)).pack(pady=10)
-        ctk.CTkLabel(self.main_frame, text="Next Appointment: 12th June 2025", font=("Arial", 16)).pack(pady=5)
-        ctk.CTkLabel(self.main_frame, text="Doctor: Dr. Smith", font=("Arial", 16)).pack(pady=5)
-        ctk.CTkButton(self.main_frame, text="Reschedule", command=self.reschedule_appointment, fg_color="#0084FF").pack(pady=10)
+
+    def show_medical_records(self):
+        """Display medical history"""
+        self.clear_main_frame()
+        ctk.CTkLabel(self.main_frame, text="📜 Medical Records", font=("Arial", 20)).pack(pady=10)
+
+    def show_billing(self):
+        """Display billing details"""
+        self.clear_main_frame()
+        ctk.CTkLabel(self.main_frame, text="💳 Billing Information", font=("Arial", 20)).pack(pady=10)
+
+    def show_help_support(self):
+        """Display help & support options"""
+        self.clear_main_frame()
+        ctk.CTkLabel(self.main_frame, text="❓ Help & Support", font=("Arial", 20)).pack(pady=10)
 
     def toggle_sidebar(self):
         """Animate Sidebar Hide/Show Effect"""
@@ -147,10 +134,10 @@ class UserDashboard(ctk.CTk):
         messagebox.showinfo("Theme Changed", f"Switched to {new_mode} Mode")
 
     def logout(self):
-        """Display logout confirmation & redirect to login"""
+        """Display logout confirmation & redirect to signup"""
         if messagebox.askyesno("Logout", "Are you sure you want to log out?"):
             self.destroy()  # Close the dashboard
-            subprocess.run(["python", "login.py"])  # Open the login page
+            subprocess.run(["python", "signup.py"])  # Open the signup page
 
 # Run the app
 if __name__ == "__main__":
