@@ -13,7 +13,7 @@ def login():
         messagebox.showerror("Error", "Invalid credentials!")
 
 app = ctk.CTk()
-app.geometry("1000x680+325+175")
+app.geometry("400x380+750+275")
 app.title("MOH Healthcare Login")
 
 ctk.CTkLabel(app, text="Username:").pack()
