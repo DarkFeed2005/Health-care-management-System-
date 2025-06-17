@@ -1,3 +1,5 @@
+import sys
+print(sys.executable)
 import customtkinter as ctk
 import tkinter as tk
 import webview  # Ensure pywebview is installed
