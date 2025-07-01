@@ -2,7 +2,7 @@ import sys
 print(sys.executable)
 import customtkinter as ctk
 import tkinter as tk
-import webview  # Ensure pywebview is installed
+import webview  
 import subprocess  # To open other Python files
 
 # Initialize app
@@ -90,7 +90,7 @@ class MainWindow(ctk.CTk):
         current_mode = ctk.get_appearance_mode()
         new_mode = "Light" if current_mode == "Dark" else "Dark"
         ctk.set_appearance_mode(new_mode)
-        tk.messagebox.showinfo("Theme Changed", f"Switched to {new_mode} Mode")
+        
 
 # Run the app
 if __name__ == "__main__":
