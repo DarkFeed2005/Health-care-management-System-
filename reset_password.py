@@ -3,6 +3,7 @@ from tkinter import messagebox
 import mysql.connector
 import subprocess  # To open login.py
 
+
 conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
 cursor = conn.cursor()
 
@@ -16,9 +17,10 @@ def reset_password():
         conn.commit()
         messagebox.showinfo("Success", "Password updated! Redirecting to login...")
         app.destroy()
-        subprocess.run(["python", "login.py"])
+        subprocess.run(["python", "C:\\Users\\kalan\\OneDrive\\Desktop\\MOH Health Care System\\Health-care-management-System-\\login.py"])
     else:
         messagebox.showerror("Error", "Username not found! Contact Admin.")
+        
 
 app = ctk.CTk()
 app.geometry("400x300")
