@@ -2,8 +2,8 @@ import customtkinter as ctk
 import matplotlib.pyplot as plt
 
 # Initialize main app
-ctk.set_appearance_mode("Dark")  # Options: "Dark" or "Light"
-ctk.set_default_color_theme("blue")  # You can change the theme color
+ctk.set_appearance_mode("Dark")  #  "Dark" or "Light"
+ctk.set_default_color_theme("blue")  #  change the theme color
 
 class HealthcareDashboard(ctk.CTk):
     def __init__(self):
