@@ -12,7 +12,7 @@ class MainWindow(ctk.CTk):
         super().__init__()
 
         self.title("MOH Healthcare System - Sri Lanka")
-        self.geometry("1000x600")
+        self.geometry("1000x680+325+175")
 
         # Header Frame (Navigation Bar)
         self.header_frame = ctk.CTkFrame(self, height=60, fg_color="#2B2B2B", corner_radius=0)
