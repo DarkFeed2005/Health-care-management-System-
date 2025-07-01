@@ -34,7 +34,7 @@ def open_reset_password():
     subprocess.run(["python", "reset_password.py"])  # Open password reset page
 
 app = ctk.CTk()
-app.geometry("400x300")
+app.geometry("400x300+325+175")
 app.title("MOH Healthcare Login")
 app.configure(fg_color="#1E2A38")
 
