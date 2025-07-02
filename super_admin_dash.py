@@ -26,7 +26,7 @@ def expand_sidebar(event):
         dashboard.after(10, lambda: sidebar.configure(width=i))
 
 def collapse_sidebar(event):
-    for i in range(250, 150, -10):  # Smooth Collapse
+    for i in range(250, 150, -10): 
         dashboard.after(10, lambda: sidebar.configure(width=i))
 
 sidebar.bind("<Enter>", expand_sidebar)
