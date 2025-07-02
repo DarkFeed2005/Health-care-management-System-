@@ -7,7 +7,7 @@ from tkcalendar import DateEntry
 from PIL import Image
 import subprocess
 
-# Connect to MySQL
+# Connect to DB
 conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
 cursor = conn.cursor()
 
