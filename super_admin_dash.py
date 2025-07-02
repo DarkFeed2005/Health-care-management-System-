@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import mysql.connector
 from tkinter import messagebox
-from tkcalendar import DateEntry  # Date picker
+from tkcalendar import DateEntry  
 from PIL import Image
 import subprocess
 
