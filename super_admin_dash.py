@@ -11,7 +11,7 @@ import subprocess
 conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
 cursor = conn.cursor()
 
-# Create Dashboard Window
+# Create Dashboard 
 dashboard = ctk.CTk()
 dashboard.geometry("900x600")
 dashboard.title("SuperAdmin Dashboard")
