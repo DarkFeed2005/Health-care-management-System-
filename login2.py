@@ -2,7 +2,7 @@ import customtkinter as ctk
 import pymysql
 import hashlib
 
-# Initialize app
+# Initialize application
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
