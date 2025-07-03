@@ -34,7 +34,7 @@ def collapse_sidebar(event):
 sidebar.bind("<Enter>", expand_sidebar)
 sidebar.bind("<Leave>", collapse_sidebar)
 
-# Load 
+# Load icons
 profile_icon = ctk.CTkImage(Image.open("icons/profile.png"), size=(20, 20))
 dashboard_icon = ctk.CTkImage(Image.open("icons/dashboard.png"), size=(20, 20))
 notes_icon = ctk.CTkImage(Image.open("icons/notes.png"), size=(20, 20))
