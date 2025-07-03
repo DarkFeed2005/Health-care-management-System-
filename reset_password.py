@@ -17,6 +17,7 @@ def reset_password():
         conn.commit()
         messagebox.showinfo("Success", "Password updated! Redirecting to login...")
         app.destroy()
+        #path
         subprocess.run(["python", "C:\\Users\\kalan\\OneDrive\\Desktop\\MOH Health Care System\\Health-care-management-System-\\login.py"])
     else:
         messagebox.showerror("Error", "Username not found! Contact Admin.")
