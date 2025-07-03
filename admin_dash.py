@@ -1,3 +1,5 @@
+#admin dashboard
+
 from customtkinter import *
 from PIL import Image
 
@@ -7,3 +9,4 @@ app.title("MOH Login")
 app.resizable(0,0)
 
 app.mainloop()
+
