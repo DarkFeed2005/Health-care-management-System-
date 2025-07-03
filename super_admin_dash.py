@@ -1,3 +1,5 @@
+# super admin dashboard
+
 import customtkinter as ctk
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
