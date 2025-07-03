@@ -17,7 +17,7 @@ class LoginApp(ctk.CTk):
         self.frame = ctk.CTkFrame(self)
         self.frame.pack(pady=20, padx=20, fill="both", expand=True)
 
-        # Title
+        # Title 
         self.title_label = ctk.CTkLabel(self.frame, text="Login", font=("Arial", 20))
         self.title_label.pack(pady=10)
 
@@ -73,3 +73,5 @@ def open_dashboard():
 if __name__ == "__main__":
     app = LoginApp()
     app.mainloop()
+    
+    
