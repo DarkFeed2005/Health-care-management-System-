@@ -50,7 +50,7 @@ ctk.CTkButton(sidebar, text="Events", image=events_icon, fg_color="#0084FF").pac
 ctk.CTkButton(sidebar, text="Add New", image=add_icon, fg_color="#0084FF").pack(pady=10)
 ctk.CTkButton(sidebar, text="Items", image=items_icon, fg_color="#0084FF").pack(pady=10)
 
-# Logout Confirmation 
+# LogoutConfirmation 
 def logout():
     if messagebox.askyesno("Logout", "Are you sure you want to log out?"):
         dashboard.destroy()  # Close the dashboard
