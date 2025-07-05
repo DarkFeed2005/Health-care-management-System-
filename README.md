@@ -33,7 +33,6 @@ A **role-based healthcare management system** designed for the **Ministry of Hea
 2️⃣ Install dependencies
 ```bash
 
-pip install tkcalendar
 pip install mysql-connector-python customtkinter matplotlib pillow
 ```
 3️⃣ Set up MySQL Database
