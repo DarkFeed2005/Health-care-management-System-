@@ -111,7 +111,7 @@ def update_charts(frame):
     ax1.pie(sizes, labels=labels, autopct="%1.1f%%", colors=["#33CC99", "#0084FF", "#FF6B6B"])
     ax1.set_title("User Distribution")
 
-    # Bar Graph (Medicines & Patients)
+    # Bar Graph 
     categories = ["Medicines", "Patients"]
     values = [medicines, patients]
     ax2.bar(categories, values, color=["#FF6B6B", "#0084FF"])
