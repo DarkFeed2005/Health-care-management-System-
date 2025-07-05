@@ -105,7 +105,7 @@ def update_charts(frame):
     ax1.clear()
     ax2.clear()
 
-    # Pie Chart 
+    # Pie Chart (User Roles)
     labels = ["SuperAdmins", "Admins", "Users"]
     sizes = [superadmins, admins, users]
     ax1.pie(sizes, labels=labels, autopct="%1.1f%%", colors=["#33CC99", "#0084FF", "#FF6B6B"])
