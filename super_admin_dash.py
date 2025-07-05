@@ -19,7 +19,7 @@ dashboard.geometry("900x600")
 dashboard.title("SuperAdmin Dashboard")
 dashboard.configure(fg_color="#1E2A38")
 
-# Sidebar with Hover 
+# Sidebar 
 sidebar = ctk.CTkFrame(dashboard, width=150, fg_color="#273746")
 sidebar.grid(row=0, column=0, rowspan=5, sticky="ns")
 
