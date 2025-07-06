@@ -4,7 +4,7 @@ import mysql.connector
 import subprocess  # To open login.py
 
 
-conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
+conn = mysql.connector.connect(host="localhost", user="root", password="", database="moh_healthcare")
 cursor = conn.cursor()
 
 def reset_password():
