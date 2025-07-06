@@ -22,7 +22,7 @@ class UserDashboard(ctk.CTk):
 
         # **Define user attributes before fetching data**
         self.user_name = "Unknown User"
-        self.user_email = "johndoe@example.com"  # Replace with logged-in user's email
+        self.user_email = "hello@example.com"  # Replace with logged-in user's email
 
         # Fetch user details from the database
         self.fetch_user_data()
