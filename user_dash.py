@@ -5,7 +5,7 @@ import subprocess  # To reopen signup.py after logout
 import mysql.connector  # MySQL database connection
 
 # Connect to MySQL
-conn = mysql.connector.connect(host="localhost", user="root", password="$Kalana$12", database="moh_healthcare")
+conn = mysql.connector.connect(host="localhost", user="root", password="*********", database="moh_healthcare")
 cursor = conn.cursor()
 
 # Initialize app
