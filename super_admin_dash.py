@@ -10,7 +10,7 @@ from PIL import Image
 import subprocess
 
 # Connect to DB
-conn = mysql.connector.connect(host="localhost", user="root", password="*********", database="moh_healthcare")
+conn = mysql.connector.connect(host="localhost", user="root", password="*****", database="moh_healthcare")
 cursor = conn.cursor()
 
 # Create Dashboard 
